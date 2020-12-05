@@ -8,7 +8,7 @@ chunk=1024
 sample_format=pyaudio.paInt16
 channels=2
 fs=44100
-filename="sample.wav"
+filename="/home/pi/recorder/scripts/sample.wav"
 p=pyaudio.PyAudio()
 stopRecording=False
 isRecording=False
@@ -31,13 +31,16 @@ def rec_start():
     while (stopRecording!=True):
         data=stream.read(chunk)
         frames.append(data)
+        print ("rec")
 
     print ("finished recording")
     stream.stop_stream()
     stream.close()
     p.terminate()
+    isRecording=True
 
 def rec_stop():
+    print ("stopping recording")
     global stopRecording
     stopRecording=True    
     GPIO.output(10,GPIO.LOW) 
