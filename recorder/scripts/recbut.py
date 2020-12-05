@@ -31,6 +31,11 @@ def rec_start():
     while (stopRecording!=True):
         data=stream.read(chunk)
         frames.append(data)
+    except KeyboardInterrupt:
+		print("Done recording")
+	except Exception as e:
+		print(str(e))
+
 
     print ("finished recording")
     stream.stop_stream()
@@ -51,7 +56,7 @@ def rec_callback(port):
     if (isRecording) :
         rec_stop()
     else:
-        rec_start()
+        #rec_start()
     
 def listen_tobutton():
     GPIO.add_event_detect (27, GPIO.RISING, callback=rec_callback)
