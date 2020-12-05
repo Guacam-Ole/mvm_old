@@ -28,12 +28,14 @@ def rec_start():
 
     GPIO.output(10,GPIO.HIGH) 
     isRecording=True
+    print ("geht los")
     try :
         while (stopRecording!=True):
             data=stream.read(chunk)
             frames.append(data)
     except KeyboardInterrupt:
         print("Done recording")
+        GPIO.output(10,GPIO.LOW) 
     except Exception as e:
         print(str(e))
 
