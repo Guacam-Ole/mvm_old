@@ -18,3 +18,15 @@ Wenn ein Fehler vorliegt wird dies über die gelbe Leuchte am Record-Knopf darge
 ## Ausschalten
 Bitte NIEMALS einfach das Stromkabel abziehen. Stattdessen den Powerknopf 3 Sekunden gedrückt halten. Er fängt dann an zu blinken und erlischt irgendwann. Dann erst das Stromkabel entfernen.
 
+## Erneut einschalten
+Wenn das Stromkabel nicht entfernt wurde kann der Recorder über den Powerknopf wieder eingeschaltet werden. Nur kurz betätigen reicht. Es dauert bis 3 Sekunden bevor die Lampe anfängt zu Leuchten/Blinkem (s.o.)
+
+## Aufnahme
+### Start
+Um die Aufnahme zu starten den Aufnahmeknopf drücken. Die orange Lampe fängt an zu blinken. Sobald das blinken in ein dauerhaftes Leuchten übergeht läuft die Aufnahme. (falls der USB-Stick eine LED besitzt sollte diese nun auch blinken/leuchten)
+
+### Beenden
+Um die Aufnahme zu beenden einfach erneut den Knopf drücken. Die Lampe geht nun wieder in ein Blinken über. Jetzt den Recorder noch *nicht* ausschalten und auch den Stick nicht entfernen. Während die LED blinkt wird die Aufnahme ins MP3-Format konvertiert. Dies kann - je nach Aufnahmedauer - eine Weile dauern. 
+
+Am Ende erlischt die LED. Nun kann der Recorder über den Powerknopf heruntergefahren werden. 
+
