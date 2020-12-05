@@ -31,7 +31,6 @@ def rec_start():
     while (stopRecording!=True):
         data=stream.read(chunk)
         frames.append(data)
-        print ("rec")
 
     print ("finished recording")
     stream.stop_stream()
@@ -47,6 +46,7 @@ def rec_stop():
     listen_tobutton()
 
 def rec_callback(port):
+    print ("callback")
     global isRecording
     if (isRecording) :
         rec_stop()
