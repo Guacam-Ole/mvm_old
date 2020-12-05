@@ -17,7 +17,7 @@ Hostname:
 
 Passwort:
 
-`sudo passwd` Tragt hier das Passwort ein, dass ihr haben solltet. :)
+`sudo passwd` Tragt hier das Passwort ein, das ihr haben solltet. :)
 
 Cron:
 
