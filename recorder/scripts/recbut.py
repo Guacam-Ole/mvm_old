@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO 
 import time 
 
-def rec_start
+def rec_start():
     print ("initializing recording")
     for i in range (0,5)    
         GPIO.output(10,GPIO.HIGH) 
