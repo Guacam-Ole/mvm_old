@@ -12,10 +12,19 @@ sudo asp-get dist-upgrade
 Derzeit reichen die Standard-Libraries die bei einer "normalen" Installation von Raspbian.OS dabei sind. Es sollte nur noch der Hostname und das Passwort angepasst werden.
 
 Hostname:
+
 `sudo nano /etc/hostname` (tragt hier "mvm") ein
 
 Passwort:
-`sudo passwd` Tragt hier das Passwort ein, das auf dem Zettel steht den ihr haben solltet. :)
+
+`sudo passwd` Tragt hier das Passwort ein, dass ihr haben solltet. :)
+
+Cron:
+
+Damit der Recorder beim Start automatisch loslegt muss noch ein Eintrag in die Crontab gemacht werden. Öffnet sie mit `sudo crontab -e` und tragt folgende Zeile ein:
+```
+@reboot /home/pi/recorder/scripts/startup.sh
+```
 
 ## Scripte
 Nachdem Linux jetzt soweit läuft fehlen nur noch die Scripte. Wechselt dazu ins Verzeichnis `/home/pi` und installiert die Scripte von Git neu:
