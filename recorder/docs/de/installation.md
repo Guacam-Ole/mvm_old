@@ -7,6 +7,11 @@ Installiert dazu einfach die aktuellste Raspbian.OS - Version und aktualisiert e
 sudo asp-get update
 sudo asp-get dist-upgrade
 ```
+folgende Pakete müssen zusätzlich installiert werden:
+```Shell
+sudo apt-get install  portaudio19-dev python-all-dev
+sudo pip install pyaudio
+```
 
 ### Grundeinstellungen
 Derzeit reichen die Standard-Libraries die bei einer "normalen" Installation von Raspbian.OS dabei sind. Es sollte nur noch der Hostname und das Passwort angepasst werden.
