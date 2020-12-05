@@ -43,7 +43,7 @@ def rec_stop():
     GPIO.output(10,GPIO.LOW) 
     listen_tobutton()
 
-def rec_callback():
+def rec_callback(port):
     global isRecording
     if (isRecording) :
         rec_stop()
