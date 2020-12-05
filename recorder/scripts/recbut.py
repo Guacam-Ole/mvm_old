@@ -32,10 +32,10 @@ def rec_start():
         while (stopRecording!=True):
             data=stream.read(chunk)
             frames.append(data)
-        except KeyboardInterrupt:
-		    print("Done recording")
-	    except Exception as e:
-    		print(str(e))
+    except KeyboardInterrupt:
+        print("Done recording")
+    except Exception as e:
+        print(str(e))
 
 
     print ("finished recording")
