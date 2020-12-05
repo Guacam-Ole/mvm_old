@@ -57,7 +57,7 @@ def rec_callback(port):
     if (isRecording) :
         rec_stop()
     else:
-        #rec_start()
+        rec_start()
     
 def listen_tobutton():
     GPIO.add_event_detect (27, GPIO.RISING, callback=rec_callback)
