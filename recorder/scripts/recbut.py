@@ -3,7 +3,7 @@ import time
 
 def rec_start():
     print ("initializing recording")
-    for i in range (0,5)    
+    for i in range (0,5) :  
         GPIO.output(10,GPIO.HIGH) 
         time.sleep(1)
         GPIO.output(10,GPIO.LOW) 
