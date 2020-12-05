@@ -10,11 +10,12 @@ channels=2
 fs=44100
 filename="sample.wav"
 p=pyaudio.PyAudio()
-stoprecording=False
+stopRecording=False
+isRecording=False
 
 def rec_start():
-    global stoprecording
-    GPIO.celanup()
+    global stopRecording
+    global isRecording
     print ("initializing recording")
     for i in range (0,5) :  
         GPIO.output(10,GPIO.HIGH) 
@@ -26,8 +27,8 @@ def rec_start():
     frames=[]
 
     GPIO.output(10,GPIO.HIGH) 
-    GPIO.add_event_detect (27, GPIO.RISING, callback=rec_callback_stop)
-    while (stoprecording!=True):
+    isRecording=True
+    while (stopRecording!=True):
         data=stream.read(chunk)
         frames.append(data)
 
@@ -37,19 +38,20 @@ def rec_start():
     p.terminate()
 
 def rec_stop():
-    global stoprecording
-    stoprecording=True    
+    global stopRecording
+    stopRecording=True    
     GPIO.output(10,GPIO.LOW) 
     listen_tobutton()
 
-def rec_callback_start(channel):
-    rec_start()
-
-def rec_callback_stop():
-    rec_stop()
+def rec_callback():
+    global isRecording
+    if (isRecording) :
+        rec_stop()
+    else:
+        rec_start()
     
 def listen_tobutton():
-    GPIO.add_event_detect (27, GPIO.RISING, callback=rec_callback_start)
+    GPIO.add_event_detect (27, GPIO.RISING, callback=rec_callback)
 
 GPIO.setmode(GPIO.BCM) 
 GPIO.setwarnings(False) 
