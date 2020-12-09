@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Device.Gpio;
-using System.Linq;
-using System.Text;
+﻿using System.Device.Gpio;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace recorder
+namespace OleAlbers.McM.Recorder
 {
-    public class Gpio
+    public class Gpio : IGpio
     {
         private GpioController _gpioController;
         public const int GpioPowerLed = 14;     // TODO: Config
@@ -20,12 +16,12 @@ namespace recorder
             _gpioController = new GpioController();
         }
 
-        public void StopAllBlinking ()
+        public void StopAllBlinking()
         {
             _stopAllBlinking = true;
         }
 
-        public async void BlinkAsync(int gpioId, int durationMs=1000)
+        public async void BlinkAsync(int gpioId, int durationMs = 1000)
         {
             _gpioController.OpenPin(gpioId, PinMode.Output);
             await Task.Run(() =>

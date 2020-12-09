@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace recorder
+namespace OleAlbers.McM.Recorder
 {
     class Program
     {
