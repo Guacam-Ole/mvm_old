@@ -29,7 +29,7 @@ def rec_start():
     GPIO.output(10,GPIO.HIGH) 
     isRecording=True
     print ("geht los")
-    try :
+    try:
         while (stopRecording!=True):
             data=stream.read(chunk)
             frames.append(data)
