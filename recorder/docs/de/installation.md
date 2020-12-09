@@ -7,7 +7,11 @@ Installiert dazu einfach die aktuellste Raspbian.OS - Version und aktualisiert e
 sudo asp-get update
 sudo asp-get dist-upgrade
 ```
-folgende Pakete müssen zusätzlich installiert werden:
+### dotnet
+Damit das dotnet-Programm ausgeführt werden kann (das Herz der Anwendung) muss die Dotnet-Runtime installiert werden:
+```Shell
+wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+[obsolete:]
 ```Shell
 sudo apt-get install  portaudio19-dev python-all-dev
 sudo pip install pyaudio
