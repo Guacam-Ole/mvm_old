@@ -6,10 +6,11 @@ namespace recorder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Start blinking");
             var gpio = new Gpio();
-            gpio.Blink(Gpio.GpioPowerLed);
+            gpio.BlinkAsync(Gpio.GpioPowerLed);
             Console.ReadLine();
+            gpio.StopAllBlinking();
         }
     }
 }

@@ -13,22 +13,31 @@ namespace recorder
         private GpioController _gpioController;
         public const int GpioPowerLed = 14;     // TODO: Config
         public const int GpioRecordLed = 10;
+        private bool _stopAllBlinking = false;
 
         public Gpio()
         {
             _gpioController = new GpioController();
-
         }
-        public void Blink(int gpioId, int durationMs=1000)
+
+        public void StopAllBlinking ()
+        {
+            _stopAllBlinking = true;
+        }
+
+        public async void BlinkAsync(int gpioId, int durationMs=1000)
         {
             _gpioController.OpenPin(gpioId, PinMode.Output);
-            while (true)
+            await Task.Run(() =>
             {
-                _gpioController.Write(gpioId, PinValue.High);
-                Thread.Sleep(durationMs);
-                _gpioController.Write(gpioId, PinValue.Low);
-                Thread.Sleep(durationMs);
-            }
+                while (!_stopAllBlinking)
+                {
+                    _gpioController.Write(gpioId, PinValue.High);
+                    Thread.Sleep(durationMs);
+                    _gpioController.Write(gpioId, PinValue.Low);
+                    Thread.Sleep(durationMs);
+                }
+            });
         }
     }
 }
