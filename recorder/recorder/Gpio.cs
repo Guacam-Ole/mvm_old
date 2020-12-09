@@ -22,10 +22,13 @@ namespace recorder
         public void Blink(int gpioId, int durationMs=1000)
         {
             _gpioController.OpenPin(gpioId, PinMode.Output);
-            _gpioController.Write(gpioId, PinValue.High);
-            Thread.Sleep(durationMs);
-            _gpioController.Write(gpioId, PinValue.Low);
-            Thread.Sleep(durationMs);
+            while (true)
+            {
+                _gpioController.Write(gpioId, PinValue.High);
+                Thread.Sleep(durationMs);
+                _gpioController.Write(gpioId, PinValue.Low);
+                Thread.Sleep(durationMs);
+            }
         }
     }
 }
