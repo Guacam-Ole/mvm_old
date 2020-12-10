@@ -7,7 +7,9 @@ namespace OleAlbers.McM.Recorder
     {
         static void Main(string[] args)
         {
-            
+
+            var config = new Configuration();
+
             var powerLed = new GpioLed(14);
 
             Console.WriteLine("ON");
@@ -33,7 +35,6 @@ namespace OleAlbers.McM.Recorder
             Thread.Sleep(5000);
             Console.WriteLine("on egain");
             powerLed.ChangeMode(GpioLed.LedModes.On);
-            Console.ReadLine();
         }
     }
 }
