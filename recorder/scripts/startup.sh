@@ -3,13 +3,11 @@ ts()
  date +"%Y-%m-%d %T"
 }
 
-
-cd /home/pi/recorder/scripts
-echo "$(ts) Power on. Initiatlizing" >>/var/log/mcm.log
-
-python pwrblink.py &
-sleep 10
-pkill -f pwrblink.py
-python ./pwron.py
-
-echo "$(ts) Ready to go" >>/var/log/mcm.log
+cd /home/pi/recorder/recorder
+dotnet build recorder.csproj
+cd bin/Debug/netcoreapp3.1
+echo "$(ts) Power on. Initiatlizing" >>/home/pi/recorder/recorder/mvm.log
+mount /dev/sda1 /mnt/usb -o uid=pi,gid=pi
+echo "$(ts) Usb mounted" >>/home/pi/recorder/recorder/mvm.log
+./recorder
+echo "$(ts) recording stopped" >>/home/pi/recorder/recorder/mvm.log
