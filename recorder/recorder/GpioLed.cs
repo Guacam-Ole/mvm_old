@@ -7,7 +7,7 @@ namespace OleAlbers.McM.Recorder
     public class GpioLed : IGpioLed
     {
         public enum LedModes {  Off, On, Blink}
-        public enum LedBlinkModes { None, Slow=1000, Medium=500, Fast=200, LightSpeed=10 }
+        public enum LedBlinkModes { None, Slow=1000, Medium=750, Fast=200, LightSpeed=100 }
 
         private GpioController _gpioController;
         private LedModes _ledMode;
@@ -23,6 +23,7 @@ namespace OleAlbers.McM.Recorder
 
         public void ChangeMode(LedModes newMode, LedBlinkModes blinkMode= LedBlinkModes.None)
         {
+            if (_ledMode == LedModes.Blink && newMode != LedModes.Blink) Thread.Sleep((int)_blinkMode * 2);
             if (newMode!= LedModes.Blink) blinkMode = LedBlinkModes.None;
             _blinkMode = blinkMode;
             _ledMode = newMode;
