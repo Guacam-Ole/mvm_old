@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace OleAlbers.McM.Recorder
 {
@@ -6,11 +7,27 @@ namespace OleAlbers.McM.Recorder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Start blinking");
-            var gpio = new Gpio();
-            gpio.BlinkAsync(Gpio.GpioPowerLed);
-            Console.ReadLine();
-            gpio.StopAllBlinking();
+            
+            var powerLed = new GpioLed(14);
+
+            Console.WriteLine("Start blinking slow");
+            powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.Slow);
+            Thread.Sleep(5);
+            Console.WriteLine("ON");
+            powerLed.ChangeMode(GpioLed.LedModes.On);
+            Thread.Sleep(5);
+            Console.WriteLine("Start blinking fast");
+            powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.LightSpeed);
+            Thread.Sleep(5);
+            Console.WriteLine("OFF");
+            powerLed.ChangeMode(GpioLed.LedModes.Off);
+            Thread.Sleep(5);
+            Console.WriteLine("medium blink");
+            powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.Medium);
+            Thread.Sleep(5);
+            Console.WriteLine("on egain");
+            powerLed.ChangeMode(GpioLed.LedModes.On);
+
         }
     }
 }
