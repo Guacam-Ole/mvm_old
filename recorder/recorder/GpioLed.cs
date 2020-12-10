@@ -23,8 +23,9 @@ namespace OleAlbers.McM.Recorder
 
         public void ChangeMode(LedModes newMode, LedBlinkModes blinkMode= LedBlinkModes.None)
         {
+            if (newMode != LedModes.Blink) blinkMode = LedBlinkModes.None;
             if (_ledMode == LedModes.Blink && newMode != LedModes.Blink) Thread.Sleep((int)_blinkMode * 2);
-            if (newMode!= LedModes.Blink) blinkMode = LedBlinkModes.None;
+            
             _blinkMode = blinkMode;
             _ledMode = newMode;
             
@@ -66,6 +67,7 @@ namespace OleAlbers.McM.Recorder
                 {
                     _gpioController.Write(_gpioId, PinValue.High);
                     Thread.Sleep((int)_blinkMode);
+                    if (_blinkMode == LedBlinkModes.None) break;
                     _gpioController.Write(_gpioId, PinValue.Low);
                     Thread.Sleep((int)_blinkMode);
                 }

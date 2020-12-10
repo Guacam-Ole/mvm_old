@@ -10,6 +10,9 @@ namespace OleAlbers.McM.Recorder
             
             var powerLed = new GpioLed(14);
 
+            Console.WriteLine("ON");
+            powerLed.ChangeMode(GpioLed.LedModes.On);
+            Thread.Sleep(5000);
             Console.WriteLine("Start blinking slow");
             powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.Slow);
             Thread.Sleep(5000);
