@@ -23,8 +23,9 @@ namespace OleAlbers.McM.Recorder
 
         public void ChangeMode(LedModes newMode, LedBlinkModes blinkMode= LedBlinkModes.None)
         {
-            if (_ledMode != LedModes.Blink) blinkMode = LedBlinkModes.None;
+            if (newMode!= LedModes.Blink) blinkMode = LedBlinkModes.None;
             _blinkMode = blinkMode;
+            _ledMode = newMode;
             
             switch (_ledMode)
             {
