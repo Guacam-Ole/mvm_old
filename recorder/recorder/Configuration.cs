@@ -11,11 +11,12 @@ namespace OleAlbers.McM.Recorder
 {
     public class Configuration
     {
-        public object Microphone { get; set; }
-        public string Path { get; set; }
+        public string Microphone { get; set; }
+        public string Path { get; set; } = "/mnt/usb";  // TODO: Config
         public string WaveFileName { get; set; }
         public string Mp3FileName { get; set; }
 
+        // TODO: Config
         public const int SamplingRate= 44100;
         public const ALFormat Format = ALFormat.Mono16;
         public const int BitsPerChannel = 16;
@@ -24,20 +25,22 @@ namespace OleAlbers.McM.Recorder
         public Configuration()
         {
             GetMicrophone();
+            InitPaths();
         }
 
         private void GetMicrophone()
         {
-            var microphone = AudioCapture.DefaultDevice;
-            Console.WriteLine($"default Microphones: {microphone}");
+            Microphone = AudioCapture.DefaultDevice;
+            
 
-            using (var capture=new AudioCapture(microphone, SamplingRate, Format, SamplingRate*10 ))
-            {
-                capture.Start();
-                Thread.Sleep(10000);
-                capture.Stop();
-            }
+            Console.WriteLine($"using Microphone: '{Microphone}'");
+        }
 
+        private void InitPaths()
+        {
+            string filename = $"{Path}/record-{DateTime.Now.ToString("yyyyMMdd-HHss")}-mvm";
+            WaveFileName = filename + ".wav";
+            Mp3FileName = filename + ".mp3";
         }
     }
 }
