@@ -16,6 +16,11 @@ namespace OleAlbers.McM.Recorder
         public string WaveFileName { get; set; }
         public string Mp3FileName { get; set; }
 
+        public const int SamplingRate= 44100;
+        public const ALFormat Format = ALFormat.Mono16;
+        public const int BitsPerChannel = 16;
+        public const int Channels = 1;
+
         public Configuration()
         {
             GetMicrophone();
@@ -23,11 +28,15 @@ namespace OleAlbers.McM.Recorder
 
         private void GetMicrophone()
         {
-            var microphones = AudioCapture.AvailableDevices;
-            Console.WriteLine($"Microphones:{microphones}");
-
             var microphone = AudioCapture.DefaultDevice;
-            Console.WriteLine($"default Microphones:{microphone}");
+            Console.WriteLine($"default Microphones: {microphone}");
+
+            using (var capture=new AudioCapture(microphone, SamplingRate, Format, SamplingRate*10 ))
+            {
+                capture.Start();
+                Thread.Sleep(10000);
+                capture.Stop();
+            }
 
         }
     }
