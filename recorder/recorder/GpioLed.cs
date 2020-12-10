@@ -44,12 +44,12 @@ namespace OleAlbers.McM.Recorder
 
         private void On()
         {
-            _gpioController.Write(_gpioId, PinValue.High);
+            _gpioController.Write(_gpioId, PinValue.Low);
         }
 
         private void Off()
         {
-            _gpioController.Write(_gpioId, PinValue.Low);
+            _gpioController.Write(_gpioId, PinValue.High);
         }
 
 

@@ -26,7 +26,7 @@ namespace OleAlbers.McM.Recorder
             powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.Medium);
             Thread.Sleep(5000);
             Console.WriteLine("lightspeed");
-            powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.Medium);
+            powerLed.ChangeMode(GpioLed.LedModes.Blink, GpioLed.LedBlinkModes.LightSpeed);
             Thread.Sleep(5000);
             Console.WriteLine("on egain");
             powerLed.ChangeMode(GpioLed.LedModes.On);
