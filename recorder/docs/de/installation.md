@@ -44,6 +44,7 @@ git init
 git remote add -f origin https://github.com/OleAlbers/mvm
 git config core.sparsecheckout true
 echo recorder/scripts/ > .git/info/sparse-checkout
+echo recorder/recorder/ > .git/info/sparse-checkout
 git pull origin master
 ```
 
