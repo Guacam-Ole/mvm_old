@@ -4,6 +4,6 @@
     {
         void StopAllBlinking();
 
-        void BlinkAsync(int gpioId, int durationMs = 1000);
+        void BlinkAsync(int gpioId, int? durationHiMs =null, int? durationLoMs=null);
     }
 }
