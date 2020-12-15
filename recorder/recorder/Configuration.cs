@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenTK;
-using OpenTK.Audio;
+﻿using OpenTK.Audio;
 using OpenTK.Audio.OpenAL;
-using System.IO;
-using System.Threading;
+
+using System;
 
 namespace OleAlbers.McM.Recorder
 {
@@ -17,7 +13,8 @@ namespace OleAlbers.McM.Recorder
         public string Mp3FileName { get; set; }
 
         // TODO: Config
-        public const int SamplingRate= 44100;
+        public const int SamplingRate = 44100;
+
         public const ALFormat Format = ALFormat.Mono16;
         public const int BitsPerChannel = 16;
         public const int Channels = 1;
@@ -31,8 +28,6 @@ namespace OleAlbers.McM.Recorder
         private void GetMicrophone()
         {
             Microphone = AudioCapture.DefaultDevice;
-            
-
             Console.WriteLine($"using Microphone: '{Microphone}'");
         }
 
